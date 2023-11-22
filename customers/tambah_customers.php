@@ -4,6 +4,8 @@ session_start();
 // var_dump($_SESSION['logged_in_user']);
 // var_dump($_SESSION['logged_in_nama']);
 // var_dump($_SESSION['cabang']);
+$id_karyawan = $_SESSION['id_karyawan'];
+$id_cabang = $_SESSION['cabang'];
 if (!isset($_SESSION["login"]) ) {
   header("Location: ../index.php");
 }
@@ -248,15 +250,16 @@ if (!isset($_SESSION["login"]) ) {
             if ($max_id == NULL){
                 $next_idpelanggan = $id_cabang . 0;
             } else{
-                // var_dump($max_id);die;
-                // Mengambil angka setelah angka 1 dari ID maksimal
-                $substring_after_one = substr($max_id, strpos($max_id, '1') + 1);
-        
-                // Menambahkan 1 ke angka setelah angka 1
-                $next_number = (int)$substring_after_one + 1;
-        
-                // Menggabungkan kembali angka 1 dengan hasil penambahan angka setelahnya
-                $next_idpelanggan = $id_cabang . $next_number;
+              $digit = substr($max_id, 1);  
+              // var_dump($digit);die;
+      
+              // Menambahkan 1 ke angka setelah angka 1
+              $next_number = (int)$digit + 1;
+              // var_dump($next_number);
+      
+              // Menggabungkan kembali angka 1 dengan hasil penambahan angka setelahnya
+              $next_idpelanggan = $id_cabang . $next_number;
+              // var_dump($next_idpenjualan);die;
             }
         }
             // Insert data ke dalam database
