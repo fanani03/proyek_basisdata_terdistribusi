@@ -4,6 +4,8 @@ session_start();
 // var_dump($_SESSION['logged_in_user']);
 // var_dump($_SESSION['logged_in_nama']);
 // var_dump($_SESSION['cabang']);
+$level = $_SESSION['level'];
+$id_cabang = $_SESSION['cabang'];
 if (!isset($_SESSION["login"]) ) {
   header("Location: ../index.php");
 }
@@ -270,7 +272,11 @@ if (!isset($_SESSION["login"]) ) {
                   <?php
 
                   include '../koneksi.php';
-                  $query = "SELECT * FROM TBL_PELANGGAN";
+                  if ($level == 'superadmin'){
+                    $query = "SELECT * FROM TBL_PELANGGAN";
+                  }elseif ($level == 'admin'){
+                    $query = "SELECT * FROM TBL_PELANGGAN WHERE ID_PELANGGAN LIKE '$id_cabang%'";
+                  }
                   $result = sqlsrv_query($conn, $query);
                   ?>
                   <?php 

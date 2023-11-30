@@ -18,11 +18,12 @@
     $ID_PRODUK = $_POST['ID_PRODUK'];
     $ID_CABANG = $_POST['ID_CABANG'];
     $NAMA_PRODUK = $_POST['NAMA_PRODUK'];
-    $HARGA = $_POST['HARGA'];
+    $HARGA_BELI = $_POST['HARGA_BELI'];
+    $HARGA_JUAL = $_POST['HARGA_JUAL'];
     $STOK = $_POST['STOK'];
 
 
-    $sql = "UPDATE TBL_PRODUK SET ID_CABANG = $ID_CABANG, NAMA_PRODUK = '$NAMA_PRODUK', HARGA = $HARGA, STOK = $STOK WHERE ID_PRODUK = $ID_PRODUK";
+    $sql = "UPDATE TBL_PRODUK SET ID_CABANG = $ID_CABANG, NAMA_PRODUK = '$NAMA_PRODUK', HARGA_BELI = $HARGA_JUAL, HARGA_JUAL = $HARGA_JUAL, STOK = $STOK WHERE ID_PRODUK = $ID_PRODUK";
     $hasil = sqlsrv_query($conn, $sql);
     echo "<script>swal.fire('Yuhuuu', 'Berhasil Membuat Akun', 'success')</script>";
 ?>
